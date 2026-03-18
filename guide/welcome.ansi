@@ -1,0 +1,12 @@
+
+[38;5;39m──────────────────────────────────────────────────────────────────[0m
+
+             [38;5;196m[1mAutomated Firewall Policy Validator[0m[0m
+
+[38;5;39m──────────────────────────────────────────────────────────────────[0m
+
+This is an open‑source command‑line tool designed to help "Network & Infra Security" teams efficiently analyze firewall rules and perform conflict checks on newly proposed policies. Developed in‑house by [1m[38;5;244mTahsin Ahmed (Intern)[0m[0m for the teams at [1m[38;5;244mNagad Ltd[0m[0m, the project streamlines policy validation and enhances operational accuracy.
+
+The development of this project was supervised by [1m[38;5;244mMd. Imranul Islam (Lead Engineer)[0m[0m and [1m[38;5;244mMohammad Zafar Ullah (Senior System Engineer)[0m[0m, whose guidance ensured technical robustness and alignment with organizational needs.
+
+[38;5;39m──────────────────────────────────────────────────────────────────[0m

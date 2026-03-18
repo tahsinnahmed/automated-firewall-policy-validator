@@ -1,0 +1,132 @@
+[
+  {
+    "rule_name": "C1_Allow_LAN_NTP_to_WAN",
+    "firewall_name": "DC1 Core",
+    "src_zones": ["LAN"],
+    "dst_zones": ["WAN"],
+    "src": ["192.168.2.0/24"],
+    "dst": ["any"],
+    "protocol": "udp",
+    "ports": ["123"]
+  },
+  {
+    "rule_name": "C2_Allow_LAN_HTTPS_to_SaaS",
+    "firewall_name": "DC2 Core",
+    "src_zones": ["LAN"],
+    "dst_zones": ["WAN"],
+    "src": ["192.168.2.0/24"],
+    "dst": ["203.0.113.0/24", "198.51.100.0/24"],
+    "protocol": "tcp",
+    "ports": ["443"]
+  },
+  {
+    "rule_name": "C3_Deny_LAN_Cleartext_HTTP",
+    "firewall_name": "DC1 Peri",
+    "src_zones": ["LAN"],
+    "dst_zones": ["WAN"],
+    "src": ["192.168.2.0/24"],
+    "dst": ["any"],
+    "protocol": "tcp",
+    "ports": ["80"]
+  },
+  {
+    "rule_name": "C4_Allow_DNS_to_InternalResolvers",
+    "firewall_name": "DC2 Core",
+    "src_zones": ["LAN"],
+    "dst_zones": ["LAN"],
+    "src": ["192.168.2.0/24"],
+    "dst": ["192.168.50.10/32", "192.168.50.11/32"],
+    "protocol": "udp",
+    "ports": ["53"]
+  },
+  {
+    "rule_name": "C5_Deny_DNS_to_Internet",
+    "firewall_name": "DC1 Core",
+    "src_zones": ["LAN"],
+    "dst_zones": ["WAN"],
+    "src": ["192.168.2.0/24"],
+    "dst": ["any"],
+    "protocol": "udp",
+    "ports": ["53"]
+  },
+  {
+    "rule_name": "C6_Allow_MGMT_to_NetworkDevices_SSH",
+    "firewall_name": "DC2 Core",
+    "src_zones": ["MGMT"],
+    "dst_zones": ["CORE"],
+    "src": ["10.20.10.0/24"],
+    "dst": ["10.20.100.0/24"],
+    "protocol": "tcp",
+    "ports": ["22"]
+  },
+  {
+    "rule_name": "C7_Allow_WAN_to_DMZ_HTTPS_AppGW",
+    "firewall_name": "DC1 Peri",
+    "src_zones": ["WAN"],
+    "dst_zones": ["DMZ"],
+    "src": ["any"],
+    "dst": ["172.20.0.20/32"],
+    "protocol": "tcp",
+    "ports": ["443"]
+  },
+  {
+    "rule_name": "C8_Deny_WAN_to_DMZ_All_Other",
+    "firewall_name": "DC2 Core",
+    "src_zones": ["WAN"],
+    "dst_zones": ["DMZ"],
+    "src": ["any"],
+    "dst": ["172.20.0.0/24"],
+    "protocol": "udp",
+    "ports": ["any"]
+  },
+  {
+    "rule_name": "C9_Allow_Backend_DMZ_to_DB",
+    "firewall_name": "DC1 Core",
+    "src_zones": ["DMZ"],
+    "dst_zones": ["APP"],
+    "src": ["172.20.0.30/32"],
+    "dst": ["10.30.0.50/32"],
+    "protocol": "tcp",
+    "ports": ["5432"]
+  },
+  {
+    "rule_name": "C10_Deny_Lateral_Movement_Between_LANs",
+    "firewall_name": "DC2 Core",
+    "src_zones": ["LAN"],
+    "dst_zones": ["LAN"],
+    "src": ["192.168.2.0/24"],
+    "dst": ["192.168.3.0/24"],
+    "protocol": "any",
+    "ports": ["any"]
+  },
+  {
+    "rule_name": "C11_Allow_Site2Site_to_APP_Specific",
+    "firewall_name": "DC1 Peri",
+    "src_zones": ["VPN"],
+    "dst_zones": ["APP"],
+    "src": ["10.250.0.0/16"],
+    "dst": ["10.30.0.0/24"],
+    "protocol": "tcp",
+    "ports": ["8443", "22"]
+  },
+  {
+    "rule_name": "C12_Deny_All_to_Firewall_SelfMgmt",
+    "firewall_name": "DC2 Core",
+    "src_zones": ["any"],
+    "dst_zones": ["FW"],
+    "src": ["any"],
+    "dst": ["10.20.255.1/32"],
+    "protocol": "any",
+    "ports": ["any"]
+  },
+  {
+    "rule_name": "C13_Allow_Internal_ICMP_MGMT_and_Core",
+    "firewall_name": "DC1 Core",
+    "src_zones": ["MGMT", "CORE"],
+    "dst_zones": ["MGMT", "CORE"],
+    "src": ["10.20.0.0/16", "10.30.0.0/16"],
+    "dst": ["10.20.0.0/16", "10.30.0.0/16"],
+    "protocol": "icmp",
+    "ports": ["any"]
+  }
+]

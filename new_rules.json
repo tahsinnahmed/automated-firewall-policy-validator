@@ -1,0 +1,29 @@
+[
+  {
+    "Site": "dc1",
+    "Source Zone": ["LAN"],
+    "Source IP": ["192.168.1.0/24"],
+    "Destination Zone": ["WAN"],
+    "Destination IP": ["192.210.10.2/24"],
+    "Port": ["443"],
+    "Protocol": "tcp"
+  },
+  {
+    "Site": "DC1",
+    "Source Zone": ["LAN"],
+    "Source IP": ["192.168.2.0/24"],
+    "Destination Zone": ["DMZ"],
+    "Destination IP": ["any"],
+    "Port": ["123"],
+    "Protocol": "udp"
+  },
+  {
+    "Site": "dc2",
+    "Source Zone": ["WAN"],
+    "Source IP": ["192.168.10.0/24"],
+    "Destination Zone": ["DMZ"],
+    "Destination IP": ["172.18.1.0/24"],
+    "Port": ["21"],
+    "Protocol": "tcp"
+  }
+]

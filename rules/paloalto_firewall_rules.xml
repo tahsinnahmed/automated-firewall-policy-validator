@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FirewallRules version="1.0">
+
+  <Rule>
+    <Site>DC1</Site>
+    <RuleName>P1_Allow_LAN_to_Proxy_HTTPS</RuleName>
+    <FirewallName>DC1 Core</FirewallName>
+    <SrcZones>
+      <Zone>LAN</Zone>
+    </SrcZones>
+    <DstZones>
+      <Zone>EDGE</Zone>
+    </DstZones>
+    <Src>
+      <Address>192.168.10.0/24</Address>
+    </Src>
+    <Dst>
+      <Address>192.168.100.20/32</Address>
+    </Dst>
+    <Protocol>tcp</Protocol>
+    <Ports>
+      <Port>443</Port>
+    </Ports>
+    <Action>allow</Action>
+  </Rule>
+
+  <Rule>
+    <Site>DC2</Site>
+    <RuleName>P2_Deny_LAN_Direct_Internet_Browse</RuleName>
+    <FirewallName>DC2 Core</FirewallName>
+    <SrcZones>
+      <Zone>LAN</Zone>
+    </SrcZones>
+    <DstZones>
+      <Zone>WAN</Zone>
+    </DstZones>
+    <Src>
+      <Address>192.168.10.0/24</Address>
+    </Src>
+    <Dst>
+      <Address>any</Address>
+    </Dst>
+    <Protocol>tcp</Protocol>
+    <Ports>
+      <Port>80</Port>
+      <Port>443</Port>
+    </Ports>
+    <Action>deny</Action>
+  </Rule>
+
+  <Rule>
+    <Site>DC1</Site>
+    <RuleName>P3_Allow_Internal_DNS_to_Forwarders</RuleName>
+    <FirewallName>DC1 Peri</FirewallName>
+    <SrcZones>
+      <Zone>LAN</Zone>
+    </SrcZones>
+    <DstZones>
+      <Zone>CORE</Zone>
+    </DstZones>
+    <Src>
+      <Address>192.168.10.0/24</Address>
+    </Src>
+    <Dst>
+      <Address>192.168.100.10/32</Address>
+      <Address>192.168.100.11/32</Address>
+    </Dst>
+    <Protocol>udp</Protocol>
+    <Ports>
+      <Port>53</Port>
+    </Ports>
+    <Action>allow</Action>
+  </Rule>
+
+  <Rule>
+    <Site>DC2</Site>
+    <RuleName>P4_Deny_DNS_to_WAN</RuleName>
+    <FirewallName>DC2 Core</FirewallName>
+    <SrcZones>
+      <Zone>LAN</Zone>
+    </SrcZones>
+    <DstZones>
+      <Zone>WAN</Zone>
+    </DstZones>
+    <Src>
+      <Address>192.168.10.0/24</Address>
+    </Src>
+    <Dst>
+      <Address>any</Address>
+    </Dst>
+    <Protocol>udp</Protocol>
+    <Ports>
+      <Port>53</Port>
+    </Ports>
+    <Action>deny</Action>
+  </Rule>
+
+  <Rule>
+    <Site>DC1</Site>
+    <RuleName>P5_Allow_WAN_to_DMZ_HTTPS_App</RuleName>
+    <FirewallName>DC1 Core</FirewallName>
+    <SrcZones>
+      <Zone>WAN</Zone>
+    </SrcZones>
+    <DstZones>
+      <Zone>DMZ</Zone>
+    </DstZones>
+    <Src>
+      <Address>any</Address>
+    </Src>
+    <Dst>
+      <Address>172.18.1.10/32</Address>
+    </Dst>
+    <Protocol>tcp</Protocol>
+    <Ports>
+      <Port>443</Port>
+    </Ports>
+    <Action>allow</Action>
+  </Rule>
+
+  <Rule>
+    <Site>DC2</Site>
+    <RuleName>P6_Deny_WAN_to_DMZ_All_Else</RuleName>
+    <FirewallName>DC2 Core</FirewallName>
+    <SrcZones>
+      <Zone>WAN</Zone>
+    </SrcZones>
+    <DstZones>
+      <Zone>DMZ</Zone>
+    </DstZones>
+    <Src>
+      <Address>any</Address>
+    </Src>
+    <Dst>
+      <Address>172.18.1.0/24</Address>
+    </Dst>
+    <Protocol>tcp</Protocol>
+    <Ports>
+      <Port>21</Port>
+    </Ports>
+    <Action>deny</Action>
+  </Rule>
+
+  <Rule>
+    <Site>DC1</Site>
+    <RuleName>P7_MGMT_to_Servers_RDP_Restricted</RuleName>
+    <FirewallName>DC1 Peri</FirewallName>
+    <SrcZones>
+      <Zone>MGMT</Zone>
+    </SrcZones>
+    <DstZones>
+      <Zone>APP</Zone>
+    </DstZones>
+    <Src>
+      <Address>10.60.10.5/32</Address>
+    </Src>
+    <Dst>
+      <Address>10.60.50.0/24</Address>
+    </Dst>
+    <Protocol>tcp</Protocol>
+    <Ports>
+      <Port>3389</Port>
+    </Ports>
+    <Action>allow</Action>
+  </Rule>
+
+  <Rule>
+    <Site>DC2</Site>
+    <RuleName>P8_Deny_All_to_Firewall_Mgmt</RuleName>
+    <FirewallName>DC2 Core</FirewallName>
+    <SrcZones>
+      <Zone>any</Zone>
+    </SrcZones>
+    <DstZones>
+      <Zone>FW</Zone>
+    </DstZones>
+    <Src>
+      <Address>any</Address>
+    </Src>
+    <Dst>
+      <Address>10.60.255.2/32</Address>
+    </Dst>
+    <Protocol>any</Protocol>
+    <Ports>
+      <Port>any</Port>
+    </Ports>
+    <Action>deny</Action>
+  </Rule>
+
+  <Rule>
+    <Site>DC1</Site>
+    <RuleName>P9_S2S_VPN_to_DMZ_SFTP</RuleName>
+    <FirewallName>DC1 Core</FirewallName>
+    <SrcZones>
+      <Zone>VPN</Zone>
+    </SrcZones>
+    <DstZones>
+      <Zone>DMZ</Zone>
+    </DstZones>
+    <Src>
+      <Address>10.240.0.0/16</Address>
+    </Src>
+    <Dst>
+      <Address>172.18.1.20/32</Address>
+    </Dst>
+    <Protocol>tcp</Protocol>
+    <Ports>
+      <Port>22</Port>
+    </Ports>
+    <Action>allow</Action>
+  </Rule>
+
+  <Rule>
+    <Site>DC2</Site>
+    <RuleName>P10_Internal_ICMP_Selective</RuleName>
+    <FirewallName>DC2 Core</FirewallName>
+    <SrcZones>
+      <Zone>MGMT</Zone>
+      <Zone>APP</Zone>
+    </SrcZones>
+    <DstZones>
+      <Zone>MGMT</Zone>
+      <Zone>APP</Zone>
+    </DstZones>
+    <Src>
+      <Address>10.60.0.0/16</Address>
+      <Address>10.70.0.0/16</Address>
+    </Src>
+    <Dst>
+      <Address>10.60.0.0/16</Address>
+      <Address>10.70.0.0/16</Address>
+    </Dst>
+    <Protocol>icmp</Protocol>
+    <Ports>
+      <Port>any</Port>
+    </Ports>
+    <Action>allow</Action>
+  </Rule>
+
+</FirewallRules>
