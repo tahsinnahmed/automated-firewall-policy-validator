@@ -8,7 +8,7 @@ This open-source tool has been developed by <b>Tahsin Ahmed (Intern)</b> to assi
 The rules were dummy. It was only used for testing purposes. No enterprise-level code is included in this repository for security purposes. Thank you.
 
 # Developer
-Tahsin Ahmed <br />
+<b>Tahsin Ahmed</b> <br />
 Intern - Network Infra & Security, Nagad Ltd. <br />
 Email: contact@tahsinahmed.com <br />
 Website: https://www.tahsinahmed.com <br />
