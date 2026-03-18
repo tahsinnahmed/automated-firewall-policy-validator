@@ -5,7 +5,7 @@ This open-source tool has been developed by <b>Tahsin Ahmed (Intern)</b> to assi
 
 ## Note
 
-The rules were dummy. It was only used for testing purposes. No enterprise-level code is included in this repository for security purposes. Thank you.
+The rules are dummy. It was only used for testing purposes. No enterprise-level code is included in this repository for security purposes. Thank you.
 
 # Developer
 <b>Tahsin Ahmed</b> <br />
