@@ -6,3 +6,9 @@ This open-source tool has been developed by Tahsin Ahmed (Intern) to assist the 
 ## Note
 
 The rules were dummy. It was only used for testing purposes. No enterprise-level code is included in this repository for security purposes. Thank you.
+
+# Developer
+Tahsin Ahmed
+Intern - Network Infra & Security, Nagad Ltd.
+Email: contact@tahsinahmed.com
+Website: https://www.tahsinahmed.com
