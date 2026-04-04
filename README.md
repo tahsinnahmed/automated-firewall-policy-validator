@@ -3,6 +3,8 @@ This is a network automation tool proposed to Nagad Ltd. to quickly check whethe
 
 This open-source tool has been developed by <b>Tahsin Ahmed (Intern)</b> to assist the "Network Infra & Security" team in their daily operational work. It validates whether newly proposed security policies already exist. If it exists, the requester will not apply for it. If it does not exist, the requester can proceed. Built entirely in‑house, the tool enhances operational efficiency, strengthens policy validation workflows, and contributes to maintaining a resilient organizational security posture. As a result, this reduces duplicates, speeds up reviews, eliminates human error, and keeps the policy clean. However, this project was developed under the supervision of <b>Md. Imranul Islam (Lead Engineer)</b> and <b>Mohammad Zafar Ullah (Senior System Engineer)</b>. Their oversight ensured technical quality and alignment with organizational objectives.
 
+<img width="2140" height="1230" alt="Automated Firewall Policy Validator" src="https://github.com/user-attachments/assets/5d7e71dd-64de-41db-9c5d-e4c1f658c82a" />
+
 ## Note
 
 The rules are dummy. It was only used for testing purposes. No enterprise-level code is included in this repository for security purposes. Thank you.
